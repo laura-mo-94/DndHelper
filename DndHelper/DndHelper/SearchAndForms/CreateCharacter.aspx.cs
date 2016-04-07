@@ -43,6 +43,7 @@ namespace DndHelper.SearchAndForms
             CharacterClass.Text = currentCharacter.Class;
             CharacterHealth.Text = currentCharacter.MaxHealth.ToString();
             CharacterSpecie.Text = currentCharacter.Specie;
+
             CBaseAttack.Text = currentCharacter.BaseStrength.ToString();
             CAttackModifier.Text = currentCharacter.StrengthModifier.ToString();
             CBaseDexterity.Text = currentCharacter.BaseDexterity.ToString();
@@ -55,6 +56,19 @@ namespace DndHelper.SearchAndForms
             CWisdomModifier.Text = currentCharacter.WisdomModifier.ToString();
             CBaseCharisma.Text = currentCharacter.BaseCharisma.ToString();
             CCharismaModifier.Text = currentCharacter.CharismaModifier.ToString();
+
+            if(currentCharacter.Alignment.Equals("True Neutral"))
+            {
+                cl.SelectedValue = "Neutral";
+                ge.SelectedValue = "Neutral";
+            }
+            else
+            {
+                string[] a = currentCharacter.Alignment.Split(' ');
+                cl.SelectedValue = a[0];
+                ge.SelectedValue = a[1];
+            }
+            
         }
 
         public void executeCharacter(object sender, System.EventArgs e)
@@ -121,6 +135,8 @@ namespace DndHelper.SearchAndForms
                     chara.BaseConstitution = Int32.Parse(CBaseConstitution.Text);
                     chara.ConstitutionModifier = Int32.Parse(CConstitutionModifier.Text);
 
+                    chara.assignInitialAlignmentVals(ge.SelectedValue, cl.SelectedValue);
+                    
                     context.Characters.Add(chara);
                     context.SaveChanges();
 
@@ -180,6 +196,18 @@ namespace DndHelper.SearchAndForms
                     currentCharacter.CharismaModifier = Int32.Parse(CCharismaModifier.Text);
                     currentCharacter.BaseConstitution = Int32.Parse(CBaseConstitution.Text);
                     currentCharacter.ConstitutionModifier = Int32.Parse(CConstitutionModifier.Text);
+
+                    string alignment = cl.SelectedValue + " " + ge.SelectedValue;
+
+                    if(cl.SelectedValue.Equals(ge.SelectedValue))
+                    {
+                        alignment = "True Neutral";
+                    }
+
+                    if(!currentCharacter.Alignment.Equals(alignment))
+                    {
+                        currentCharacter.assignInitialAlignmentVals(ge.Text, cl.Text);
+                    }
 
                     context.Entry(currentCharacter).State = EntityState.Modified;
                     context.SaveChanges();

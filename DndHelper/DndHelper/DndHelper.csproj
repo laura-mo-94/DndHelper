@@ -469,6 +469,10 @@
     <Compile Include="Migrations\201604071450173_CharacterStats.Designer.cs">
       <DependentUpon>201604071450173_CharacterStats.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604072044103_CharacterAlignment.cs" />
+    <Compile Include="Migrations\201604072044103_CharacterAlignment.Designer.cs">
+      <DependentUpon>201604072044103_CharacterAlignment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Campaign.cs" />
     <Compile Include="Models\Character.cs" />
@@ -555,6 +559,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604071450173_CharacterStats.resx">
       <DependentUpon>201604071450173_CharacterStats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604072044103_CharacterAlignment.resx">
+      <DependentUpon>201604072044103_CharacterAlignment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -218,6 +218,52 @@
                                             </p>
                                         </td>
                                     </tr>
+
+                                    <tr>
+                                        <td>
+                                            <p>
+                                                <b> Alignment </b>: <%#: Item.Alignment %>
+                                                    <br />
+                                                   &nbsp &nbsp
+                                                    <asp:Button ID="LawfulValDown" class="btn btn-warning-outline" value=-1 field="LawfulVal" owner=<%#:Item.CharacterID %> runat="server" Text="-" onclick="ChangeStats"/>
+                                                    &nbsp &nbsp 
+                                                    Lawful: <%#: Item.LawfulVals %>
+                                                    &nbsp &nbsp
+                                                    <asp:Button ID="LawfulValUp" class="btn btn-warning-outline" value=1 field="LawfulVal" owner=<%#:Item.CharacterID %>  runat="server" Text="+" onclick="ChangeStats"/>
+                                                    
+                                                <br />
+
+                                                    &nbsp &nbsp
+                                                    <asp:Button ID="ChaoticValDown" class="btn btn-warning-outline" value=-1 field="ChaoticVal" owner=<%#:Item.CharacterID %> runat="server" Text="-" onclick="ChangeStats"/>
+                                                    &nbsp &nbsp 
+                                                    Chaotic : <%#: Item.ChaoticVals %>
+                                                    &nbsp &nbsp
+                                                    <asp:Button ID="ChaoticValUp" class="btn btn-warning-outline" value=1 field="ChaoticVal" owner=<%#:Item.CharacterID %>  runat="server" Text="+" onclick="ChangeStats"/>
+                                                
+                                                <br />
+
+                                                    &nbsp &nbsp
+                                                    <asp:Button ID="GoodValDown" class="btn btn-warning-outline" value=-1 field="GoodVal" owner=<%#:Item.CharacterID %> runat="server" Text="-" onclick="ChangeStats"/>
+                                                    &nbsp &nbsp 
+                                                    Good : <%#: Item.GoodVals %>
+                                                    &nbsp &nbsp
+                                                    <asp:Button ID="GoodValUp" class="btn btn-warning-outline" value=1 field="GoodVal" owner=<%#:Item.CharacterID %>  runat="server" Text="+" onclick="ChangeStats"/>
+                                            
+                                                 <br />
+
+                                                    &nbsp &nbsp
+                                                    <asp:Button ID="EvilValDown" class="btn btn-warning-outline" value=-1 field="EvilVal" owner=<%#:Item.CharacterID %> runat="server" Text="-" onclick="ChangeStats"/>
+                                                    &nbsp &nbsp 
+                                                    Evil : <%#: Item.EvilVals %>
+                                                    &nbsp &nbsp
+                                                    <asp:Button ID="EvilValUp" class="btn btn-warning-outline" value=1 field="EvilVal" owner=<%#:Item.CharacterID %>  runat="server" Text="+" onclick="ChangeStats"/>
+                        
+                                            </p>
+                                            <p>
+
+                                            </p>
+                                        </td>
+                                    </tr>
                                </table>
                             </ItemTemplate>
                             <EmptyDataTemplate>

@@ -85,7 +85,7 @@ namespace DndHelper.SearchAndForms
                 {
                     Campaign campaign = new Campaign();
                     campaign.CampaignName = CampaignName.Text;
-                    currentCampaign.Description = CampaignDescription.Text;
+                    campaign.Description = CampaignDescription.Text;
 
                     campaign.DungeonMasterID = dm;
                     context.Campaigns.Add(campaign);

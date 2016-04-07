@@ -40,7 +40,13 @@ namespace DndHelper.Account
             ClientScript.RegisterArrayDeclaration("modifiedStats", (currentCharacter.BaseWisdom + currentCharacter.WisdomModifier).ToString());
             ClientScript.RegisterArrayDeclaration("modifiedStats", (currentCharacter.BaseCharisma + currentCharacter.CharismaModifier).ToString());
 
+            ClientScript.RegisterArrayDeclaration("alignmentData", currentCharacter.GoodVals.ToString());
+            ClientScript.RegisterArrayDeclaration("alignmentData", currentCharacter.ChaoticVals.ToString());
+            ClientScript.RegisterArrayDeclaration("alignmentData", currentCharacter.EvilVals.ToString());
+            ClientScript.RegisterArrayDeclaration("alignmentData", currentCharacter.LawfulVals.ToString());
+
             ClientScript.RegisterStartupScript(Page.GetType(), "OnLoad", "loadChart();", true);
+
         }
 
         private string getArrayString(int[] array)
@@ -104,10 +110,14 @@ namespace DndHelper.Account
                 IQueryable<Campaign> campaigns = master.GetCampaigns(currentCharacter.CharacterID);
                 List<CampaignsToPlayers> campRels = new List<CampaignsToPlayers>();
 
-               foreach(Campaign cam in campaigns)
+                if(campaigns != null && campaigns.Count() > 0)
                 {
-                    campRels.AddRange(context.CampaignsToPlayers.Where(x => x.CharacterID == currentCharacter.CharacterID && cam.CampaignId == x.CampaignId));
+                    foreach (Campaign cam in campaigns)
+                    {
+                        campRels.AddRange(context.CampaignsToPlayers.Where(x => x.CharacterID == currentCharacter.CharacterID && cam.CampaignId == x.CampaignId));
+                    }
                 }
+              
                 context.Characters.Attach(currentCharacter);
                 context.Characters.Remove(currentCharacter);
 

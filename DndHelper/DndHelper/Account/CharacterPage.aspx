@@ -44,6 +44,7 @@
                             <b>HP</b>: <%: getCurrentCharacter().CurrentHealth %> / <%: getCurrentCharacter().MaxHealth %>
                             <br />
                             <b>Status</b>: <%: getCurrentCharacter().Status %>
+                            <b>Alignment</b>: <%: getCurrentCharacter().Alignment %>
                         </p>
                     </td>
                 </tr>
@@ -87,56 +88,104 @@
         </div>
     </div>
 
-    <div id="CharacterStats" style="width:100%; height:400px;">
-        <script type="text/javascript">
-            function loadChart() {
-               
-                var test = 10;
-                window.chart = new Highcharts.Chart({
-                    chart: {
-                        renderTo: 'CharacterStats',
-                        polar: true,
-                        type: 'line'
-                    },
+    <div class="row">
+         <div id="CharacterStats" class="col-md-6">
+       
+         </div>
 
-                    title: {
-                        text: 'Stats',
-                    },
+         <div id="CharacterAlignment" class="col-md-6">
 
-                    pane: {
-                        size: '80%'
-                    },
+         </div>
 
-                    xAxis: {
-                        categories: ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma'],
-                        tickmarkPlacement: 'on',
-                        lineWidth: 0
-                    },
-
-                    yAxis: {
-                        gridLineInterpolation: 'polygon',
-                        lineWidth: 0,
-                        min: 0,
-                    },
-
-                    tooltip: {
-                        shared: true
-                    },
-
-                    series: [{
-                        name: 'With Modifiers',
-                        data: modifiedStats,
-                        type: 'area',
-                        pointPlacement: 'on'
-                    },
-                    {
-                        name: 'Base Stats',
-                        data: baseStats,
-                        type: 'area',
-                        pointPlacement: 'on'
-                    }]
-                 });
-            };
-        </script>
     </div>
+   
+    
+     <script type="text/javascript">
+             function loadChart() {
+                 window.chart = new Highcharts.Chart({
+                     chart: {
+                         renderTo: 'CharacterStats',
+                         polar: true,
+                         type: 'line'
+                     },
+
+                     title: {
+                         text: 'Stats',
+                     },
+
+                     pane: {
+                         size: '80%'
+                     },
+
+                     xAxis: {
+                         categories: ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma'],
+                         tickmarkPlacement: 'on',
+                         lineWidth: 0
+                     },
+
+                     yAxis: {
+                         gridLineInterpolation: 'polygon',
+                         lineWidth: 0,
+                         min: 0,
+                     },
+
+                     tooltip: {
+                         shared: true
+                     },
+
+                     series: [{
+                         name: 'With Modifiers',
+                         data: modifiedStats,
+                         type: 'area',
+                         pointPlacement: 'on'
+                     },
+                     {
+                         name: 'Base Stats',
+                         data: baseStats,
+                         type: 'area',
+                         pointPlacement: 'on'
+                     }]
+                 });
+
+                 window.aligntmentChart = new Highcharts.Chart({
+                     chart: {
+                         renderTo: 'CharacterAlignment',
+                         polar: true,
+                         type: 'line'
+                     },
+
+                     title: {
+                         text: 'Alignment',
+                     },
+
+                     pane: {
+                         size: '80%'
+                     },
+
+                     xAxis: {
+                         categories: ['Good', 'Chaotic', 'Evil', 'Lawful'],
+                         tickmarkPlacement: 'on',
+                         lineWidth: 0
+                     },
+
+                     yAxis: {
+                         gridLineInterpolation: 'polygon',
+                         lineWidth: 0,
+                         min: 0,
+                     },
+
+                     tooltip: {
+                         shared: true
+                     },
+
+                     series: [{
+                         name: 'With Modifiers',
+                         data: alignmentData,
+                         type: 'area',
+                         pointPlacement: 'on'
+                     }]
+                 });
+             };
+
+        </script>
 </asp:Content>

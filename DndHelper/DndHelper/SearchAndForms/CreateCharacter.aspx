@@ -166,6 +166,29 @@
         </tr>
     </table>
 
+    <table id="alignment" class="table table-condensed table-borderless">
+        <tr>
+            <td>
+                Alignment
+            </td>
+           
+             <td>
+                <asp:DropDownList ID="ge" runat ="server">
+                    <asp:ListItem>Good</asp:ListItem>
+                    <asp:ListItem>Neutral</asp:ListItem>
+                    <asp:ListItem>Evil</asp:ListItem>
+                </asp:DropDownList>
+            </td>
+
+            <td>
+                <asp:DropDownList ID="cl" runat ="server">
+                    <asp:ListItem>Lawful</asp:ListItem>
+                    <asp:ListItem>Neutral</asp:ListItem>
+                    <asp:ListItem>Chaotic</asp:ListItem>
+                </asp:DropDownList>
+            </td>
+        </tr>
+    </table>
     <div>
          <asp:Button ID="Execute"  class="btn btn-warning-outline" runat="server" Text="Create" onclick="executeCharacter"/>
     </div>

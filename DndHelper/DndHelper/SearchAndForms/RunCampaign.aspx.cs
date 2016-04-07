@@ -125,6 +125,26 @@ namespace DndHelper.SearchAndForms
             {
                 target.CharismaModifier += Int32.Parse(b.Attributes["value"]);
             }
+            else if(field.Equals("GoodVal"))
+            {
+                target.GoodVals += Int32.Parse(b.Attributes["value"]);
+                target.checkAlignment();
+            }
+            else if(field.Equals("EvilVal"))
+            {
+                target.EvilVals += Int32.Parse(b.Attributes["value"]);
+                target.checkAlignment();
+            }
+            else if(field.Equals("ChaoticVal"))
+            {
+                target.ChaoticVals += Int32.Parse(b.Attributes["value"]);
+                target.checkAlignment();
+            }
+            else if(field.Equals("LawfulVal"))
+            {
+                target.LawfulVals += Int32.Parse(b.Attributes["value"]);
+                target.checkAlignment();
+            }
 
             CharacterStats.DataSource = (ViewState["characterMap"] as Dictionary<int, Character>).Values.ToList<Character>();
             CharacterStats.DataBind();

@@ -75,6 +75,92 @@ namespace DndHelper.Models
         [Display(Name = "CharismaModifier")]
         public int CharismaModifier { get; set; }
 
+        [Display(Name = "Alignment")]
+        public string Alignment { get; set; }
+
+        [Display(Name = "GoodVals")]
+        public int GoodVals { get; set; }
+
+        [Display(Name = "EvilVals")]
+        public int EvilVals { get; set; }
+
+        [Display(Name = "ChaoticVals")]
+        public int ChaoticVals { get; set; }
+
+        [Display(Name = "LawfulVals")]
+        public int LawfulVals { get; set; }
+
+        public int threshold = 15;
+
+        public void checkAlignment()
+        {
+            string ge = "Neutral";
+            string cl = "Neutral";
+
+            if (EvilVals - GoodVals > threshold)
+            {
+                ge = "Evil";
+            }
+            else if(GoodVals - EvilVals > threshold)
+            {
+                ge = "Good";
+            }
+
+            if(ChaoticVals - LawfulVals > threshold)
+            {
+                cl = "Chaotic";
+            }
+            else if(LawfulVals - ChaoticVals > threshold)
+            {
+                cl = "Lawful";
+            }
+
+            if(ge.Equals(cl))
+            {
+                Alignment = "True Neutral";
+            }
+            else
+            {
+                Alignment = cl + " " + ge;
+            }
+        }
+
+        public void assignInitialAlignmentVals(string ge, string cl)
+        {
+            if(ge.Equals("Good"))
+            {
+                GoodVals = threshold * 2;
+                EvilVals = 0;
+            }
+            else if(ge.Equals("Evil"))
+            {
+                EvilVals = threshold * 2;
+                GoodVals = 0;
+            }
+            else
+            {
+                EvilVals = threshold;
+                GoodVals = threshold;
+            }
+
+            if(cl.Equals("Chaotic"))
+            {
+                ChaoticVals = threshold * 2;
+                LawfulVals = 0;
+            }
+            else if(cl.Equals("Lawful"))
+            {
+                LawfulVals = threshold * 2;
+                ChaoticVals = 0;
+            }
+            else
+            {
+                ChaoticVals = threshold;
+                LawfulVals = threshold;
+            }
+
+            checkAlignment();
+        }
         public void ChangeHealth(int dif)
         {
             CurrentHealth += dif;
